@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10' apply false
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    group = 'io.freefair'
+
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+
+    dependencies {
+        api 'org.springframework.boot:spring-boot-autoconfigure:2.5.2'
+
+        testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = '13'
+    }
+
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = '13'
+    }
+}
