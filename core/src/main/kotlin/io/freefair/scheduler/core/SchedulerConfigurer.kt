@@ -24,7 +24,7 @@ open class SchedulerConfigurer {
     @Bean
     @ConditionalOnMissingBean(TaskExecutor::class)
     open fun taskExecutor(schedulerConfiguration: SchedulerConfigurationProperties): TaskExecutor {
-        return TaskExecutor(schedulerConfiguration.threadPoolSize)
+        return PooledTaskExecutor(schedulerConfiguration.threadPoolSize)
     }
 
     @Bean
